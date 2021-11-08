@@ -1,0 +1,29 @@
+.headerContainer {
+  min-height: 400px;
+  background: url(/img/paivaperho-648x474.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.nameWithDetail {
+  text-align: center;
+}
+
+.name {
+  color: var(--off-white);
+  font-weight: 500;
+  font-size: var(--font-size-xl);
+}
+
+.nameWithDetail {
+  color: var(--off-white);
+  font-weight: 500;
+  font-size: var(--font-size-lg);
+}
