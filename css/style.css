@@ -1,0 +1,614 @@
+/* ==========================================================================
+   kaijuhaanpaa.com
+
+   Contents
+     1.  Design tokens        colours, type, spacing -- change things here first
+     2.  Reset and base
+     3.  Page layout
+     4.  Site header and navigation
+     5.  Page headings
+     6.  Gallery
+     7.  Artwork figures      the .artwork--large / .artwork--medium sizes
+     8.  Books
+     9.  CV
+     10. Contact
+     11. Site footer
+     12. Lightbox
+     13. Print
+   ========================================================================== */
+
+/* 1. Design tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Colour. A warm off-white keeps the artwork from being framed by glare. */
+  --colour-page: #faf9f7;
+  --colour-ink: #1f1d1b;
+  --colour-ink-muted: #6d665e;
+  --colour-rule: #e4ded5;
+  --colour-link: #7a4a2f;
+  --colour-link-hover: #12100e;
+
+  /* Type */
+  --font-body:
+    "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+    "Times New Roman", serif;
+  --font-ui:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --text-small: 0.8125rem;
+  --text-caption: 0.875rem;
+  --header-caption: 1.5rem;
+  --text-body: 1.0625rem;
+  --text-title: 1.5rem;
+  --text-display: 2.6rem;
+
+  --leading-tight: 1.25;
+  --leading-body: 1.6;
+
+  /* Spacing. A single scale keeps vertical rhythm consistent. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+
+  /* Layout.
+	   --width-large and --width-medium are the two sizes a picture can be
+	   displayed at, and they are the ONLY place those numbers live:
+	   js/images.js reads them from this file as the page loads, so changing one
+	   here is all that is needed — the markup follows automatically. */
+  --width-large: 700px;
+  --width-medium: 500px;
+
+  /* How tall the full-width header banner is. It grows with the window
+	   between these limits; the picture is cropped to fit. */
+  --banner-height: clamp(200px, 26vw, 380px);
+
+  --width-text: 38rem;
+  --page-gutter: 1.25rem;
+}
+
+/* 2. Reset and base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--colour-page);
+  color: var(--colour-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--colour-link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--colour-link-hover);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  margin: 0 0 var(--space-3);
+}
+
+:focus-visible {
+  outline: 2px solid var(--colour-link);
+  outline-offset: 3px;
+}
+
+/* Visible only once tabbed to -- lets keyboard users skip the navigation. */
+.skip-link {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--colour-ink);
+  color: var(--colour-page);
+  font-family: var(--font-ui);
+  font-size: var(--text-small);
+  border-radius: 2px;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* 3. Page layout
+   -------------------------------------------------------------------------- */
+
+.page {
+  max-width: var(--width-large);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter) var(--space-7);
+}
+
+/* 4. Site header and navigation
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  padding: 0 0 var(--space-4);
+  text-align: center;
+}
+
+/* The banner picture runs the full width of the window, edge to edge, at every
+   screen size. */
+.site-banner {
+  position: relative;
+  width: 100%;
+}
+
+.site-banner__image {
+  width: 100%;
+  height: var(--banner-height);
+  object-fit: cover;
+  /* The band is wider than it is tall, so on most screens the top and bottom
+	   are trimmed. Sitting the crop high keeps the figure's head clear of the
+	   top edge; what gets lost instead is the foot of the collage, which is
+	   where the title sits anyway. */
+  object-position: center 22%;
+}
+
+/* The name sits over the foot of the picture. The gradient behind it is what
+   keeps the letters readable over a busy textile. */
+.site-banner__caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: var(--space-6) var(--page-gutter) var(--space-3);
+  background: linear-gradient(
+    to top,
+    rgba(24, 16, 8, 0.78) 0%,
+    rgba(24, 16, 8, 0.45) 45%,
+    rgba(24, 16, 8, 0) 100%
+  );
+}
+
+.site-header__title {
+  display: inline-block;
+  font-size: var(--text-display);
+  letter-spacing: 0.02em;
+  color: #fdfbf7;
+  text-decoration: none;
+  text-shadow: 0 1px 12px rgba(20, 12, 4, 0.55);
+}
+
+.site-header__tagline {
+  margin: var(--space-1) 0 0;
+  color: rgba(253, 251, 247, 0.86);
+  font-size: var(--header-caption);
+  font-style: italic;
+  letter-spacing: 0.06em;
+  text-shadow: 0 1px 8px rgba(20, 12, 4, 0.6);
+}
+
+.site-nav {
+  margin-top: var(--space-4);
+  padding: 0 var(--page-gutter);
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.site-nav a {
+  font-family: var(--font-ui);
+  font-size: var(--text-small);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--colour-ink-muted);
+  text-decoration: none;
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid transparent;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--colour-ink);
+}
+
+.site-nav .is-current {
+  color: var(--colour-ink);
+  border-bottom-color: var(--colour-ink);
+}
+
+/* 5. Page headings
+   -------------------------------------------------------------------------- */
+
+.page-header {
+  margin: var(--space-5) 0 var(--space-6);
+  text-align: center;
+}
+
+.page-title {
+  font-size: var(--text-title);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--colour-ink-muted);
+  font-family: var(--font-ui);
+  font-weight: 400;
+}
+
+.page-subtitle {
+  margin: var(--space-2) 0 0;
+  color: var(--colour-ink-muted);
+  font-style: italic;
+  font-size: var(--text-caption);
+}
+
+/* 6. Gallery
+   -------------------------------------------------------------------------- */
+
+/* Compact list of years at the top of the gallery, so visitors can jump
+   straight to a period instead of scrolling past 130 works. */
+.year-index ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-3);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--colour-rule);
+}
+
+.year-index a {
+  font-family: var(--font-ui);
+  font-size: var(--text-small);
+  color: var(--colour-ink-muted);
+  text-decoration: none;
+}
+
+.year-index a:hover,
+.year-index a:focus-visible {
+  color: var(--colour-ink);
+  text-decoration: underline;
+}
+
+.year {
+  padding-top: var(--space-6);
+  /* Keep the year heading clear of the top edge when jumped to via anchor. */
+  scroll-margin-top: var(--space-4);
+}
+
+.year__title {
+  margin-bottom: var(--space-5);
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: var(--text-caption);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--colour-ink-muted);
+}
+
+/* 7. Artwork figures
+   --------------------------------------------------------------------------
+   An artwork is displayed at one of two widths, set by the class on its
+   <figure>:
+
+     .artwork--large    --width-large   (700px by default)
+     .artwork--medium   --width-medium  (500px by default)
+
+   To move one picture between the two, change its "size" in
+   content/data.json and rebuild. To change what those two widths *are* for
+   the whole site, edit the tokens in section 1 and rebuild. Both widths are
+   already generated in images/, so nothing is ever scaled up. */
+
+.artwork {
+  margin: 0 auto var(--space-6);
+  text-align: center;
+}
+
+.artwork--large img {
+  width: var(--width-large);
+}
+
+.artwork--medium img,
+.artwork--full img {
+  width: var(--width-medium);
+}
+
+/* `width` above is the intended size; this keeps it inside narrow screens. */
+.artwork img {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.artwork__link {
+  display: inline-block;
+  cursor: zoom-in;
+}
+
+.artwork__caption {
+  max-width: var(--width-text);
+  margin: var(--space-3) auto 0;
+  color: var(--colour-ink-muted);
+  font-size: var(--text-caption);
+  line-height: 1.5;
+}
+
+/* 8. Books
+   -------------------------------------------------------------------------- */
+
+.books .artwork {
+  margin-bottom: var(--space-7);
+}
+
+/* 9. CV
+   -------------------------------------------------------------------------- */
+
+.cv {
+  max-width: var(--width-text);
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+.cv__intro {
+  margin-bottom: var(--space-6);
+  text-align: center;
+  font-style: italic;
+  color: var(--colour-ink-muted);
+}
+
+.cv__heading {
+  margin: var(--space-6) 0 var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--colour-rule);
+  font-family: var(--font-ui);
+  font-size: var(--text-small);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--colour-ink-muted);
+}
+
+.cv__list li {
+  margin-bottom: var(--space-2);
+  line-height: 1.5;
+}
+
+/* A line that is nothing but a year introduces the entries beneath it. */
+.cv__list .cv__year {
+  margin-top: var(--space-4);
+  color: var(--colour-ink-muted);
+  font-family: var(--font-ui);
+  font-size: var(--text-small);
+  letter-spacing: 0.1em;
+}
+
+.cv__list .cv__year:first-child {
+  margin-top: 0;
+}
+
+/* Exhibition and book titles. */
+.cv__title {
+  font-style: italic;
+}
+
+/* Sections that are a paragraph of prose rather than a list. */
+.cv__prose {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* 10. Contact
+   -------------------------------------------------------------------------- */
+
+/* The details are laid out as an upright business card: a picture across the
+   top, then the contact lines on white beneath it. */
+
+.contact {
+  text-align: center;
+}
+
+.card {
+  max-width: 320px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 3px;
+  /* Two shadows: a tight one for the edge, a soft wide one to lift the card
+     off the page. */
+  box-shadow: 0 1px 2px rgba(31, 29, 27, 0.07),
+              0 10px 30px rgba(31, 29, 27, 0.10);
+  overflow: hidden;   /* keeps the picture inside the rounded corners */
+}
+
+.card__picture {
+  margin: 0;
+}
+
+.card__picture .artwork__link {
+  display: block;   /* no stray gap under the picture */
+}
+
+.card__picture img {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  height: auto;
+  object-fit: cover;
+}
+
+.card__details {
+  padding: var(--space-5) var(--space-4);
+}
+
+.card__name {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-title);
+  letter-spacing: 0.03em;
+}
+
+.card__lines {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 2;
+}
+
+/* 10b. Load failure
+   --------------------------------------------------------------------------
+   Shown in place of the content if a data file cannot be fetched, so a failure
+   never leaves the visitor looking at a blank page. */
+
+.load-error {
+  padding: var(--space-6) 0;
+  text-align: center;
+  color: var(--colour-ink-muted);
+  font-style: italic;
+}
+
+/* 11. Site footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  padding: var(--space-5) var(--page-gutter);
+  border-top: 1px solid var(--colour-rule);
+  text-align: center;
+  color: var(--colour-ink-muted);
+  font-family: var(--font-ui);
+  font-size: var(--text-small);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* 12. Lightbox
+   --------------------------------------------------------------------------
+   Enhancement only. Without JavaScript the artwork links still open the large
+   image directly, so nothing is lost. */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: rgba(20, 18, 16, 0.94);
+  cursor: zoom-out;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox__image {
+  max-width: min(100%, 1400px);
+  max-height: 82vh;
+  width: auto;
+  object-fit: contain;
+  cursor: default;
+}
+
+.lightbox__caption {
+  max-width: var(--width-text);
+  margin: 0;
+  color: #d9d2c8;
+  font-size: var(--text-caption);
+  text-align: center;
+}
+
+.lightbox__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(250, 249, 247, 0.12);
+  color: #faf9f7;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox__button:hover {
+  background: rgba(250, 249, 247, 0.24);
+}
+
+.lightbox__button[hidden] {
+  display: none;
+}
+
+.lightbox__button--prev {
+  left: var(--space-3);
+}
+.lightbox__button--next {
+  right: var(--space-3);
+}
+
+.lightbox__close {
+  top: var(--space-3);
+  right: var(--space-3);
+  transform: none;
+}
+
+@media (max-width: 600px) {
+  .lightbox__button--prev {
+    left: var(--space-2);
+  }
+  .lightbox__button--next {
+    right: var(--space-2);
+  }
+}
+
+/* 13. Print
+   -------------------------------------------------------------------------- */
+
+@media print {
+  .site-nav,
+  .year-index,
+  .skip-link,
+  .lightbox {
+    display: none;
+  }
+
+  body {
+    background: #fff;
+    font-size: 11pt;
+  }
+
+  .artwork {
+    break-inside: avoid;
+  }
+}

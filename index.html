@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+	The Gallery page.
+
+	Edit this file directly — nothing generates it. The header, navigation and
+	footer are added by /js/shell.js; the artworks are read from
+	/content/gallery.json. To add or change a picture, edit that file.
+-->
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Gallery — Kaiju Haanpää</title>
+	<meta name="description" content="Textile collages by Kaiju Haanpää, from 1974 to the present.">
+
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Gallery — Kaiju Haanpää">
+	<meta property="og:description" content="Textile collages by Kaiju Haanpää, from 1974 to the present.">
+	<meta property="og:image" content="/images/700/2025-kaksi-minaa-two-me-103-x-97.jpg">
+
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<main id="main" class="page">
+		<header class="page-header">
+			<h1 class="page-title">Gallery</h1>
+			<p class="page-subtitle">Textile collages, 1974 – 2025</p>
+		</header>
+
+		<nav class="year-index" aria-label="Jump to year" data-render="year-index"></nav>
+
+		<div data-render="gallery"></div>
+	</main>
+
+	<script type="module" src="/js/site.js"></script>
+</body>
+</html>

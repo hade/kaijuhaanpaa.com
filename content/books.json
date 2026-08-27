@@ -1,0 +1,63 @@
+[
+ {
+  "file": "1000081112.jpg",
+  "size": "medium",
+  "caption": [
+   "2025 Tumba ja Hirvikuono",
+   "ISBN 9789522308849",
+   "satukuvakirja / picture storybook"
+  ],
+  "alt": ""
+ },
+ {
+  "file": "2022-mustan-tahran-arvoitus-isbn-978-952-230-769-9.jpg",
+  "size": "large",
+  "caption": [
+   "2022 Mustan tahran arvoitus",
+   "ISBN 978-952-230-769-9",
+   "saturomaani / children’s novel"
+  ],
+  "alt": "Teksti"
+ },
+ {
+  "file": "2022-kansi-taidekirja-isbn-978-952-94-5936-0.jpg.jpg",
+  "size": "large",
+  "caption": [
+   "2022 Kaiju Haanpää Tekstiilikollaaseja Textile Collages",
+   "ISBN 978-952-94-5936-0"
+  ],
+  "alt": ""
+ },
+ {
+  "file": "aukeama-taidekirjasta-lesken-lehti.jpg",
+  "size": "medium",
+  "caption": [],
+  "alt": "Aukeama taidekirjasta: Lesken lehti / Spread from the art book: Lesken lehti"
+ },
+ {
+  "file": "aukeama-taidekirjasta-enkeli.jpg",
+  "size": "medium",
+  "caption": [],
+  "alt": "Aukeama taidekirjasta: Enkeli / Spread from the art book: Enkeli"
+ },
+ {
+  "file": "2019-unen-tuoja-isbn-978-952-94-2319-4.jpg.jpg",
+  "size": "large",
+  "caption": [
+   "2019 Unen tuoja",
+   "ISBN 978-952-94-2319-4",
+   "romaani / novel"
+  ],
+  "alt": ""
+ },
+ {
+  "file": "2015-kosketuksia-isbn-978-952-93-5462-7-1.jpg",
+  "size": "large",
+  "caption": [
+   "2015 Kosketuksia",
+   "ISBN 978-952-93-5462-7",
+   "runoja / poems"
+  ],
+  "alt": ""
+ }
+]

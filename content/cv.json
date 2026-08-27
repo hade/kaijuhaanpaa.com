@@ -1,0 +1,689 @@
+{
+ "intro": [
+  "Artist, Ma.",
+  "Born 1948 in Helsinki",
+  "works in Porvoo, Finland"
+ ],
+ "sections": [
+  {
+   "heading": "Studies",
+   "entries": [
+    {
+     "year": "1987",
+     "detail": "Helsinki University of Applied Arts (current Aalto University School of Arts, Design and Architecture), Helsinki 1987 (M.A.)"
+    },
+    {
+     "year": "1976",
+     "detail": "Helsinki University of Applied Arts (Art Teacher)"
+    },
+    {
+     "year": "1971",
+     "detail": "Turku School of Fine Arts (current Arts Academy at Turku) (Painting)"
+    }
+   ]
+  },
+  {
+   "heading": "Solo Exhibitions",
+   "entries": [
+    {
+     "year": "2025",
+     "title": "Eilen ja nyt / Before and Now",
+     "detail": "Minkart Window Gallery, Vihti"
+    },
+    {
+     "year": "2023",
+     "title": "Hopiasiivet / Silver Wings",
+     "detail": "Gallery Becker, Jyväskylä"
+    },
+    {
+     "year": "2023",
+     "title": "Tulppaanityttö / Tulip Maiden",
+     "detail": "Gallery Saskia, Tampere"
+    },
+    {
+     "year": "2023",
+     "title": "Tekstiilikollaaseja / Textile Collages",
+     "detail": "Cultural Hall, Mäntyharju"
+    },
+    {
+     "year": "2023",
+     "title": "Näkijät / Prophets",
+     "detail": "Gallery Uusi Kipinä, Lahti"
+    },
+    {
+     "year": "2021",
+     "title": "Unelmia ja unikuvia / Dreams and Illusions",
+     "detail": "Minkart Window Gallery, Vihti"
+    },
+    {
+     "year": "2020",
+     "title": "Nocturno",
+     "detail": "Pinxinmäki, Sysmä"
+    },
+    {
+     "year": "2019",
+     "title": "Kolmio ja hopeinen kuu / The Triangle and the Silver Moon",
+     "detail": "Heinola Art Museum, Heinola"
+    },
+    {
+     "year": "2019",
+     "title": "Siipi / The Wing",
+     "detail": "Gallery Luts, Lohja"
+    },
+    {
+     "year": "2018",
+     "title": "Vuosien varrelta / Along the Years",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "2018",
+     "title": "Kaiju Haanpää – Textile Collages",
+     "detail": "Pinxinmäki, Sysmä"
+    },
+    {
+     "year": "2017",
+     "title": "Konstrundan – avoimet työhuoneet / Konstrundan Open Studios",
+     "detail": "Huhmari"
+    },
+    {
+     "year": "2016",
+     "title": "Hereillä uneksittu / Dreams Wide Awake",
+     "detail": "Gallery 5, Oulu"
+    },
+    {
+     "year": "2015",
+     "title": "Kaukana ja tässä / Far Away and Near",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "2014",
+     "title": "Kaiju Haanpää – tekstiilikollaaseja / Textile Collages",
+     "detail": "Gallery Aino, Järvenpää"
+    },
+    {
+     "year": "2012",
+     "title": "Ennen ja nyt- tekstiilikollaaseja / Before and Now – Textile Collages",
+     "detail": "Kokki Gallery, Ikkala"
+    },
+    {
+     "year": "2011",
+     "title": "Lintu sininen ja muita tekstiilikollaaseja / Blue Bird and Other Textile Collages",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "2005",
+     "title": "Muistikuvia / Memories",
+     "detail": "Rauma Hall, Rauma"
+    },
+    {
+     "year": "2001",
+     "title": "Kaiju Haanpää – tekstiilikollaaseja / Textile Collages",
+     "detail": "Heinola Art Museum, Heinola"
+    },
+    {
+     "year": "2001",
+     "title": "Lesken lehti / Tussilago Farfara",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "2000",
+     "title": "Hetkien kuvia / Passing Images",
+     "detail": "Lapua Cultural Center Patruuna Gallery, Lapua"
+    },
+    {
+     "year": "1999",
+     "title": "Kaiju Haanpää – tekstiilikollaaseja / Textile Collages",
+     "detail": "Gallery Becker, Jyväskylä"
+    },
+    {
+     "year": "1999",
+     "title": "Kaiju Haanpää – tekstiilikollaaseja / Textile Collages",
+     "detail": "Studio Hill, Fiskars"
+    },
+    {
+     "year": "1999",
+     "title": "Kaiju Haanpää – tekstiilikollaaseja / Textile Collages",
+     "detail": "Gallery Uusikuva, Kotka"
+    },
+    {
+     "year": "1999",
+     "title": "Mutta jätä minulle unelmat / But Leave Me the Dreams",
+     "detail": "Gallery of Hämeenlinna Cultural Center, Hämeenlinna"
+    },
+    {
+     "year": "1998",
+     "title": "…aber fur mich…",
+     "detail": "Gallery Art&Weise, Wien, Austria"
+    },
+    {
+     "year": "1998",
+     "title": "Kaiju Haanpää",
+     "detail": "IIASA, Laxenburg, Austria"
+    },
+    {
+     "year": "1998",
+     "title": "Uneksittu / Dreamed",
+     "detail": "Gallery Bronda, Helsinki"
+    },
+    {
+     "year": "1998",
+     "title": "Hetken varjo / Shadows of a Moment",
+     "detail": "Matinpalo Museum, Nastola"
+    },
+    {
+     "year": "1997",
+     "title": "Magnolian lehti / Magnolia Leaf",
+     "detail": "Gallery Joella, Turku"
+    },
+    {
+     "year": "1996",
+     "title": "Täysikuun aika / Time of the Full Moon",
+     "detail": "Gallery of Espoo Cultural Center, Espoo"
+    },
+    {
+     "year": "1995",
+     "title": "Kaiju Haanpää – tekstiilikollaaseja / Textile Collages",
+     "detail": "Gallery Kapriisi, Kuopio"
+    },
+    {
+     "year": "1995",
+     "title": "Täysikuun aika / Time of the Full Moon",
+     "detail": "Piha Gallery, Lahti"
+    },
+    {
+     "year": "1995",
+     "title": "Kuutamosonaatti / Moonlight Sonata",
+     "detail": "Seitsenkulma Gallery, Nummela"
+    },
+    {
+     "year": "1994",
+     "title": "Purple Winged Pegasus – Images of Life and Myth",
+     "detail": "Del Oro Gallery, Santa Fe, New Mexico, USA"
+    },
+    {
+     "year": "1994",
+     "title": "Den Rödvingade Pegasen",
+     "detail": "Eckerö Summer Art, Ahvenanmaa"
+    },
+    {
+     "year": "1994",
+     "title": "Kaiju Haaanpää – tekstiilikollaaseja / Textile Collages",
+     "detail": "Gallery Bremer, Karkkila"
+    },
+    {
+     "year": "1993",
+     "title": "Kaiju Haaanpää – tekstiilikollaaseja / Textile Collages",
+     "detail": "Gallery of City Library, Toijala"
+    },
+    {
+     "year": "1993",
+     "title": "Kaiju Haaanpää – tekstiilikollaaseja / Textile Collages",
+     "detail": "Gallery Tähdenlento, Lohja"
+    },
+    {
+     "year": "1993",
+     "title": "Pyhä kissa / Holy Cat",
+     "detail": "Kässä Gallery, Virkkala"
+    },
+    {
+     "year": "1993",
+     "title": "Lissu viekastelee / Foxy Lizzy",
+     "detail": "Seitsenkulma Gallery, Nummela"
+    },
+    {
+     "year": "1992",
+     "title": "Kaiju Haanpää",
+     "detail": "St Gregory Hall, Athens, Ga, USA"
+    },
+    {
+     "year": "1971",
+     "title": "Kaiju Haanpää – guasseja ja tekstiilejä / Gouache and Textile Collages",
+     "detail": "Turku Student Theatre, Turku"
+    },
+    {
+     "year": "1970",
+     "title": "Kaiju Haanpää – guasseja ja tekstiilejä / Gouache and Textile Collages",
+     "detail": "Pinella, Turku"
+    }
+   ]
+  },
+  {
+   "heading": "Group Exhibitions",
+   "entries": [
+    {
+     "year": "2025",
+     "detail": "Art Center Salmela, Mäntyharju"
+    },
+    {
+     "year": "2025",
+     "detail": "Gallery Lakeus, Kauhava"
+    },
+    {
+     "year": "2024",
+     "title": "Christmas Bazaar",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "2024",
+     "title": "Christmas Bazaar",
+     "detail": "Gallery LUTS, Lohja"
+    },
+    {
+     "year": "2023",
+     "title": "IlO Olla, Artists O",
+     "detail": "Heinola Art Museum"
+    },
+    {
+     "year": "2023",
+     "title": "Kolmet silmät / Eyes of Three",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "2022",
+     "title": "Empatia / Empathy",
+     "detail": "Annual Exhibition by Länsi-Uusimaa Artists’ Association, Linder Hall, Lohja"
+    },
+    {
+     "year": "2022",
+     "title": "Sakura – kevät / Sakura – Spring",
+     "detail": "Gallery Pihatto, Lappeenranta"
+    },
+    {
+     "year": "2021",
+     "title": "Taiteen asunto / A Home for Art",
+     "detail": "Lohja, Housing Fair, Lohja"
+    },
+    {
+     "year": "2018",
+     "title": "Tuli, vesi, maa – Zakowski, Räsänen, Haanpää / Fire, Water, Earth – Zakowski, Räsänen, Haanpää",
+     "detail": "Gumbostrand Konst & Form, Söderkulla"
+    },
+    {
+     "year": "2017",
+     "title": "Hiidenheimon Säätiön taidekokoelmat / Art Collection of Hiidenheimo Foundation",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "2016",
+     "title": "Eläin / Animals",
+     "detail": "(Länsi-Uusimaa Artists’ Association), Kässä Gallery, Lohja"
+    },
+    {
+     "year": "2015",
+     "title": "Taiteilijoita kuvataidekoulun elämässä / Artists for Lohja Art School",
+     "detail": "Kässä Gallery, Lohja"
+    },
+    {
+     "year": "2014",
+     "title": "Tatsi 2014",
+     "detail": "Old Library, Savonlinna"
+    },
+    {
+     "year": "2014",
+     "title": "Ui ja katso / Swim and Look",
+     "detail": "(Länsi-Uusimaa Artists’ Association), Swimming Centre, Lohja"
+    },
+    {
+     "year": "2013",
+     "title": "Valo voittaa pimeyden / Light Wins Darkness",
+     "detail": "Lohjantähti Mall, Lohja"
+    },
+    {
+     "year": "2013",
+     "title": "Vihtiläiset taiteilijat / Vihti Artists",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "2013",
+     "title": "Maikat maalissa / Got there!",
+     "detail": "Gallery Bremer, Karkkila"
+    },
+    {
+     "year": "2013",
+     "title": "Ars Tytyri",
+     "detail": "Tytyri Mine Museum, Lohja"
+    },
+    {
+     "year": "2013",
+     "title": "Ornamon teosnäyttely / Ornamo Exhibition in Kaapelitehdas",
+     "detail": "Helsinki"
+    },
+    {
+     "year": "2012",
+     "title": "Länsi-Uudenmaan taiteilijaseuran Take Away-näyttely / Länsi-Uusimaa Artists Association’s Take Away",
+     "detail": "Gallery Vikholm, Lohja"
+    },
+    {
+     "year": "2012",
+     "title": "Vihtiläistä nykytaidetta / Contemporary Art in Vihti",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "2012",
+     "title": "Heijastuksia / Reflections",
+     "detail": "Länsi-Uusimaa Artists Association 30 Years, Studio of the Main Library, Lohja"
+    },
+    {
+     "year": "2011",
+     "title": "Vihtiläistä nykytaidetta / Contemporary Art in Vihti",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "2010",
+     "title": "Perhosia tilassa – Kaiju Haanpää ja Marketta Urpo / Butterflies in a Space – Kaiju Haanpää and Marketta Urpo",
+     "detail": "Tila Gallery, Helsinki"
+    },
+    {
+     "year": "2010",
+     "title": "Hiidenheimon säätiön taidehankinnat / Art Purchases by Hiidenheimo Foundation",
+     "detail": "Niuhala Show Room, Vihti"
+    },
+    {
+     "year": "2010",
+     "title": "Joulunäyttely / Christmas Exhibition",
+     "detail": "Tila Gallery, Helsinki"
+    },
+    {
+     "year": "2007",
+     "title": "Vihtiläiset taiteilijat / Vihti Artists",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "2002",
+     "title": "Kuvajaiset- Länsi-Uuudenmaan taiteilijaseura 20 vuotta / Länsi-Uusimaa Artists Association 20 Years",
+     "detail": "Laurentius Hall, Lohja"
+    },
+    {
+     "year": "2002",
+     "title": "Acme- naisen elämä / Acme – Life of Women",
+     "detail": "Kässä Gallery, Lohja Summer, Lohja"
+    },
+    {
+     "year": "2002",
+     "title": "Naisten talo – Kaiju Haanpää ja Pirkko Ruokolainen / A House by Women – Kaiju Haanpää and Pirkko Ruokolainen",
+     "detail": "Olkkala Manor Exhibition Space, Vihti"
+    },
+    {
+     "year": "2000",
+     "title": "Itse teossa / Got you!",
+     "detail": "Espoo Cultural Center, Espoo"
+    },
+    {
+     "year": "2000",
+     "title": "International Zonta Exhibition",
+     "detail": "Pegge Hopper Gallery, Honolulu, Hawai, USA"
+    },
+    {
+     "year": "2000",
+     "title": "Naisen elämästä – Kaiju Haanpää ja Kerttu Horila / About the Life of Women – Kaiju Haanpää and kerttu Horila",
+     "detail": "Seinäjoki Art Hall, Seinäjoki"
+    },
+    {
+     "year": "2000",
+     "title": "Naisen elämästä – Kaiju Haanpää ja Kerttu Horila / About the Life of Women – Kaiju Haanpää and kerttu Horila",
+     "detail": "Varkaus Art Museum"
+    },
+    {
+     "year": "2000",
+     "title": "Sechs Himmelsrichtungen",
+     "detail": "Station 3, Wien, Austria"
+    },
+    {
+     "year": "1999",
+     "title": "Vihtiläistä nykytaidetta / Contemporary Art in Vihti",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "1999",
+     "title": "Kitchen Sisters",
+     "detail": "Seniwati Gallery, Ubud, Bali, Indonesia"
+    },
+    {
+     "year": "1999",
+     "title": "Kitchen Sisters",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "1998",
+     "title": "Weihnachtsausstellung / Christmas Exhibition",
+     "detail": "Gallery Art &Weise, Wien, Austria"
+    },
+    {
+     "year": "1997",
+     "title": "Kotilokuu ja jokilaulu – Kaiju Haanpää ja Pirkko Kuusela / Shell Moon and River Song – Kaiju Haanpää and Pirkko Kuusela",
+     "detail": "Museum Warehouse, Jokioinen"
+    },
+    {
+     "year": "1997",
+     "title": "Yhdessä II / Together II",
+     "detail": "Päivölä Recreation Home, Vihti"
+    },
+    {
+     "year": "1996",
+     "title": "Kuvan hetki / Pictorial Moment",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "1996",
+     "title": "Länsi-Uuudenmaan taiteilijaseuran vuosinäyttely / Länsi-Uusimaa Artists Association",
+     "detail": "Studio of the Main Library, Lohja"
+    },
+    {
+     "year": "1996",
+     "title": "TEXO – Ajantajut / TEXO Today",
+     "detail": "Museum of Central Finland, Jyväskylä"
+    },
+    {
+     "year": "1996",
+     "title": "Kitchen Sisters",
+     "detail": "Promenadi Gallery, Hyvinkää"
+    },
+    {
+     "year": "1995",
+     "title": "Kitchen Sisters",
+     "detail": "Studio of the Lohja Art School, Lohja"
+    },
+    {
+     "year": "1995",
+     "title": "Naisen nauru / Women’s Laugh",
+     "detail": "Turku Cultural Center, Turku"
+    },
+    {
+     "year": "1995",
+     "title": "Kitchen Sisters",
+     "detail": "Mältinranta Art Center, Tampere"
+    },
+    {
+     "year": "1994",
+     "title": "Christmas in Del Oro Gallery",
+     "detail": "Del Oro Gallery, Santa Fe, New Mexico, USA"
+    },
+    {
+     "year": "1994",
+     "title": "Länsi-Uuudenmaan taiteilijaseuran vuosinäyttely / Länsi-Uusimaa Artists Association",
+     "detail": "Kässä Gallery, Virkkala"
+    },
+    {
+     "year": "1994",
+     "title": "Laurinkatu – taidekatu / Laurinkatu -Art Street",
+     "detail": "Lohja Summer, Lohja"
+    },
+    {
+     "year": "1994",
+     "title": "Yhdessä I / Together I",
+     "detail": "Gallery Pictor, Nummela"
+    },
+    {
+     "year": "1993",
+     "title": "Taidetalo Kastellin avajaisnäyttely / Opening Exhibition of Kastelli Art House",
+     "detail": "Taidetalo Kastelli, Ojakkala"
+    },
+    {
+     "year": "1992",
+     "title": "Museum Without Walls",
+     "detail": "Bemus Point, N.Y., USA"
+    },
+    {
+     "year": "1972",
+     "title": "Nuorten näyttely / Young Artists",
+     "detail": "Helsinki Art Hall, Helsinki"
+    },
+    {
+     "year": "1971",
+     "title": "Hämeenlinnan taiteilijaseuran vuosinäyttely / Annual Exhibition of Hämeenlinna Artists’ Association",
+     "detail": "Hämeenlinna Art Museum, Hämeenlinna"
+    },
+    {
+     "year": "1970",
+     "title": "Turun Taideyhdistyksen Piirustuskoulusta valmistuneet / Graduating Students of Turku School of Fine Arts",
+     "detail": "Wäinö Aaltonen Art Museum, Turku"
+    },
+    {
+     "year": "1970",
+     "title": "Turun Taideyhdistyksen Piirustuskoulun oppilaat / Students of Turku Art School’",
+     "detail": "Tammisaari"
+    }
+   ]
+  },
+  {
+   "heading": "Memberships",
+   "text": "Painters’ Union in Finland; Ornamo /The Finnish Association of Designers (TEXO and Artists-O), Länsi-Uusimaa Artists’ Association (LUTS)"
+  },
+  {
+   "heading": "Grants",
+   "entries": [
+    {
+     "year": "2014, 2015",
+     "detail": "Hiidenheimo Foundation"
+    },
+    {
+     "year": "1998",
+     "detail": "ORNAMO / The Finnish Association of Designers"
+    },
+    {
+     "year": "1998",
+     "detail": "Magistrat der Stadt Wien – Kultur"
+    },
+    {
+     "detail": "Nokia Mobile Phones Austria"
+    },
+    {
+     "year": "1995",
+     "detail": "CIMO / Centre for International Mobility"
+    },
+    {
+     "year": "1989",
+     "detail": "Vihti Community Cultural Award"
+    },
+    {
+     "year": "1971",
+     "detail": "Turku Saskiat"
+    }
+   ]
+  },
+  {
+   "heading": "Collections",
+   "text": "Vihti Community; Hiidenheimo Foundation; Länsi-Uusimaa Savings Bank; Aalto University Departement of Information & Service Management; Museum of Modern Art in Tampere; SYLVA/Parents Association for Cancer Children; Länsi-Uusimaa Center for Adult Education. Private Collectors in Finland and Abroad."
+  },
+  {
+   "heading": "Books",
+   "entries": [
+    {
+     "year": "2022",
+     "title": "Mustan tahran arvoitus",
+     "detail": "ISBN 978-952-230-769-9 (children’s novel)"
+    },
+    {
+     "year": "2022",
+     "title": "Kaiju Haanpää – Tekstiilikollaaseja Textile Collages 1974-2022",
+     "detail": "ISBN 978-952-94-5936-0"
+    },
+    {
+     "year": "2019",
+     "title": "Unen tuoja",
+     "detail": "ISBN 978-952-94-2319-4 (novel)"
+    },
+    {
+     "year": "2015",
+     "title": "Kosketuksia",
+     "detail": "ISBN 978-952-93-5462-7 (poems)"
+    }
+   ]
+  },
+  {
+   "heading": "Working Abroad",
+   "entries": [
+    {
+     "year": "1999",
+     "detail": "Bali, Indonesia"
+    },
+    {
+     "year": "1997–1998",
+     "detail": "Wien, Austria"
+    },
+    {
+     "year": "1991–1992",
+     "detail": "USA, Ga"
+    }
+   ]
+  },
+  {
+   "heading": "Voyage Important for Work",
+   "text": "India, Iran, Indonesia, USA, Thailand, Egypt, Tunis, Argentina, Greece, France, Austria, Italy, Kenia, Vietnam, Mauritius, Taiwan, South-Africa, Turkey, Arab Emirates, Hungary, Canada, Poland, Germany, Russia"
+  },
+  {
+   "heading": "Other",
+   "entries": [
+    {
+     "year": "2019",
+     "detail": "Ornamo Artists O/Artist of the Month (March)"
+    },
+    {
+     "year": "2015",
+     "detail": "A Moment for Poetry (poems from the Book Kosketuksia)"
+    },
+    {
+     "year": "2014",
+     "detail": "Curator for the Annual Exhibition of Länsi-Uuusimaa Artists’ Association"
+    },
+    {
+     "year": "2013",
+     "detail": "Victoria Martelin: ‘Kaiju Haanpään tuotannon keskeiset aiheet ja niiden merkitys’(’Central Motives and their Meaning to Kaiju Haanpää’s Art’), Master Thesis / University of Lappland"
+    },
+    {
+     "year": "2001",
+     "detail": "‘Lesken lehti’, an interdisciplinary art project in Gallery Pictor, Nummela (textile collages and poems)"
+    },
+    {
+     "year": "2001",
+     "detail": "Works exhibited at the Opening of Helsinki School of Economics’ renovated Chydenia Building and at Easter at Lohja Medieval Church"
+    },
+    {
+     "year": "1998",
+     "detail": "’Black Madonna’, an interdisciplinary art project at Ruprechtskirche, Wien, Austria (textile collages, dresses and staging)"
+    },
+    {
+     "year": "1997",
+     "detail": "Cover Picture for Unicef Gift Box Europe"
+    }
+   ]
+  },
+  {
+   "heading": "Teaching",
+   "entries": [
+    {
+     "year": "2000–2011",
+     "detail": "Principal of Espoo School of Art"
+    },
+    {
+     "year": "1987–1991, 1993–1999",
+     "detail": "Principal of Vihti School of Art"
+    },
+    {
+     "year": "1971–1987",
+     "detail": "Art teacher in different schools"
+    }
+   ]
+  }
+ ]
+}

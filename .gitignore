@@ -1,0 +1,5 @@
+# macOS
+.DS_Store
+
+# Partial downloads left behind by an interrupted tools/download-originals.sh
+images/original/*.part

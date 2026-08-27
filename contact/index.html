@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+	The Contact page.
+
+	Edit this file directly — nothing generates it. This page is short enough
+	that its words live here rather than in a data file. The header, navigation
+	and footer are added by /js/shell.js.
+
+	The <figure data-image="..."> below is filled in by /js/images.js, which
+	works out the right file and srcset from /content/images.json — so the
+	picture stays sharp on every screen without any of that being typed here.
+-->
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Contact — Kaiju Haanpää</title>
+	<meta name="description" content="Get in touch with Kaiju Haanpää.">
+
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Contact — Kaiju Haanpää">
+	<meta property="og:description" content="Get in touch with Kaiju Haanpää.">
+	<meta property="og:image" content="/images/700/business-card.png">
+
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<main id="main" class="page">
+		<header class="page-header">
+			<h1 class="page-title">Contact</h1>
+		</header>
+
+		<section class="contact">
+			<div class="card">
+				<figure class="card__picture"
+				        data-image="business-card.png"
+				        data-alt="Detail of a textile collage: a blue bird in flight among flowers"></figure>
+
+				<div class="card__details">
+					<p class="card__name">Kaiju Haanpää</p>
+
+					<p class="card__lines">
+						<a href="tel:+358405559299">+358 40 555 9299</a><br>
+						<a href="mailto:kaiju2011@gmail.com">kaiju2011@gmail.com</a><br>
+						<a href="https://kaijuhaanpaa.com/">kaijuhaanpaa.com</a>
+					</p>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<script type="module" src="/js/site.js"></script>
+</body>
+</html>
