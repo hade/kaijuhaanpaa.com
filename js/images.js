@@ -103,6 +103,25 @@ export function typographic(text) {
 }
 
 /**
+ * The id a picture is known by in a link, worked out from its filename:
+ *
+ *   2025-kaksi-minaa-two-me-103-x-97.jpg  ->  2025-kaksi-minaa-two-me-103-x-97
+ *
+ * Accents are folded to plain letters so the address stays readable when it is
+ * pasted into a message. Because it comes from the filename it stays the same
+ * as long as the file does, so a shared link keeps working.
+ */
+export function slugFor(filename) {
+	const stem = String(filename).replace(/\.(jpe?g|png)$/i, '');
+	return stem
+		.normalize('NFD')
+		.replace(/[̀-ͯ]/g, '')   // drop the accent marks
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/^-|-$/g, '');
+}
+
+/**
  * One artwork: a responsive <img> wrapped in a link the lightbox picks up.
  *
  * item     {file, size, caption[], alt}
@@ -157,7 +176,8 @@ export function figureHTML(item, manifest, inner = false) {
 	// own wrapper; otherwise it comes wrapped in a captioned <figure>.
 	if (inner) return picture;
 
-	return `<figure class="artwork artwork--${escapeHtml(size)}">
+	// The id is what a shared link points at -- see slugFor above.
+	return `<figure class="artwork artwork--${escapeHtml(size)}" id="${escapeHtml(slugFor(name))}">
 	${picture}${figcaption}
 </figure>`;
 }

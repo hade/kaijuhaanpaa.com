@@ -421,6 +421,23 @@ p {
   font-style: italic;
 }
 
+/* A title that links elsewhere on the site — a book pointing at its picture on
+   the Books page. Underlined in the link colour so it reads as clickable, but
+   the text itself stays dark so a run of entries still reads as a list. */
+.cv__link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--colour-link);
+  padding-bottom: 1px;
+}
+
+.cv__link:hover,
+.cv__link:focus-visible {
+  color: var(--colour-link);
+  border-bottom-width: 2px;
+  padding-bottom: 0;   /* keeps the text from shifting as the rule thickens */
+}
+
 /* Sections that are a paragraph of prose rather than a list. */
 .cv__prose {
   margin: 0;
@@ -539,12 +556,40 @@ p {
   cursor: default;
 }
 
+/* Caption and the link button beneath the picture. */
+.lightbox__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: default;
+}
+
 .lightbox__caption {
   max-width: var(--width-text);
   margin: 0;
   color: #d9d2c8;
   font-size: var(--text-caption);
   text-align: center;
+}
+
+/* Copies the address of the picture on show, for sharing a single work. */
+.lightbox__copy {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid rgba(217, 210, 200, 0.35);
+  border-radius: 2px;
+  background: none;
+  color: rgba(217, 210, 200, 0.85);
+  font-family: var(--font-ui);
+  font-size: var(--text-small);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.lightbox__copy:hover,
+.lightbox__copy:focus-visible {
+  border-color: rgba(217, 210, 200, 0.7);
+  color: #faf9f7;
 }
 
 .lightbox__button {

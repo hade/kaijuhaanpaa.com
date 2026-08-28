@@ -18,6 +18,7 @@ because untagged images are treated as sRGB everywhere.
     python3 tools/generate-sizes.py [--force]
 """
 import concurrent.futures
+import hashlib
 import json
 import os
 import subprocess
@@ -49,14 +50,43 @@ def convert(src, dst, width):
     subprocess.run(cmd, check=True, capture_output=True)
 
 
-def process(name, force):
+def fingerprint(path):
+    """A short digest of the master's contents."""
+    digest = hashlib.sha256()
+    with open(path, 'rb') as fh:
+        for block in iter(lambda: fh.read(1 << 20), b''):
+            digest.update(block)
+    return digest.hexdigest()[:16]
+
+
+def process(name, force, previous):
+    """Make the three web copies of one master, unless they are already right.
+
+    Whether the work is needed is decided from the master's contents, not its
+    timestamp. Timestamps are no guide here: cloning the repository gives every
+    file a fresh one, and renaming a file keeps its old one, so going by dates
+    would redo everything after a clone and miss real changes after a rename.
+
+    Re-encoding is deterministic -- the same master and settings always produce
+    byte-identical output -- so a needless run would not actually change any
+    file. Skipping simply keeps it quick.
+    """
     src = os.path.join(ORIGINALS, name)
-    record = {'original': list(identify(src))}
+    source_hash = fingerprint(src)
+    record = {'original': list(identify(src)), 'source': source_hash}
+
+    was = previous.get(name, {})
+    unchanged = was.get('source') == source_hash
+
     for width in WIDTHS:
         dst = os.path.join(ROOT, 'images', str(width), name)
-        if force or not os.path.exists(dst) or os.path.getmtime(dst) < os.path.getmtime(src):
+        if force or not unchanged or not os.path.exists(dst):
             convert(src, dst, width)
-        record[str(width)] = list(identify(dst))
+            record[str(width)] = list(identify(dst))
+        else:
+            # Nothing about the master changed, so the recorded size still holds.
+            record[str(width)] = was.get(str(width)) or list(identify(dst))
+
     return name, record
 
 
@@ -72,10 +102,21 @@ def main():
     # deployed. (Plain ASCII filenames avoid the problem entirely.)
     names = sorted(unicodedata.normalize('NFC', f)
                    for f in os.listdir(ORIGINALS) if not f.startswith('.'))
+
+    # What was made last time, so unchanged masters can be left alone.
+    previous = {}
+    manifest_path = os.path.join(ROOT, 'content', 'images.json')
+    if os.path.exists(manifest_path) and not force:
+        try:
+            with open(manifest_path, encoding='utf-8') as fh:
+                previous = json.load(fh)
+        except (OSError, ValueError):
+            previous = {}
+
     manifest, failures = {}, []
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
-        futures = {pool.submit(process, name, force): name for name in names}
+        futures = {pool.submit(process, name, force, previous): name for name in names}
         for done, future in enumerate(concurrent.futures.as_completed(futures), 1):
             name = futures[future]
             try:
@@ -91,6 +132,29 @@ def main():
         fh.write('\n')
 
     print(f'generated {len(manifest)} images x {len(WIDTHS)} widths')
+
+    # Renaming a master leaves the copies made under its old name behind. They
+    # are not used by anything, so --prune clears them out.
+    if '--prune' in sys.argv:
+        removed = 0
+        for width in WIDTHS:
+            folder = os.path.join(ROOT, 'images', str(width))
+            for f in os.listdir(folder):
+                if not f.startswith('.') and unicodedata.normalize('NFC', f) not in manifest:
+                    os.remove(os.path.join(folder, f))
+                    removed += 1
+        print(f'pruned {removed} left-over files from renamed masters')
+    else:
+        stale = 0
+        for width in WIDTHS:
+            folder = os.path.join(ROOT, 'images', str(width))
+            stale += sum(1 for f in os.listdir(folder)
+                         if not f.startswith('.')
+                         and unicodedata.normalize('NFC', f) not in manifest)
+        if stale:
+            print(f'note: {stale} left-over files from renamed masters — '
+                  f're-run with --prune to remove them')
+
     for name, exc in failures:
         print(f'FAILED {name}: {exc}')
     return 1 if failures else 0

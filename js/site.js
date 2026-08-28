@@ -13,7 +13,7 @@
 import { mountShell } from './shell.js';
 import { renderGallery, renderBooks, renderCv } from './content.js';
 import { loadImageSizes, renderStandaloneImages } from './images.js';
-import { initLightbox } from './lightbox.js';
+import { initLightbox, openFromHash } from './lightbox.js';
 
 const RENDERERS = {
 	gallery: renderGallery,
@@ -62,7 +62,11 @@ async function start() {
 
 	await Promise.all(jobs);
 
-	scrollToHash();
+	// The address may name a single artwork, in which case open it. Otherwise
+	// it may name a year to jump to.
+	if (!openFromHash()) {
+		scrollToHash();
+	}
 }
 
 initLightbox();   // delegated, so it works no matter when pictures appear

@@ -111,9 +111,26 @@ single paragraph of `text`. Adding an exhibition is one entry:
 - `year` — printed once above all the entries that share it. Optional.
 - `title` — set in italics. Optional; leave it out for a venue-only entry.
 - `detail` — the venue, or the whole line when there is no title.
+- `link` — optional; makes the title a link to somewhere else on the site.
 
 No HTML goes in there: the italics, year headings and spacing all come from
-`css/style.css`.
+`css/style.css`. **Writing an `<a>` tag into a title does not work** — the text
+is escaped, so the tag would appear on the page as literal characters. Use
+`link` instead:
+
+```json
+{
+ "year": "2022",
+ "title": "Mustan tahran arvoitus",
+ "detail": "ISBN 978-952-230-769-9 (children's novel)",
+ "link": "/books/#2022-mustan-tahran-arvoitus-isbn-978-952-230-769-9"
+}
+```
+
+The four books in the CV already link to their pictures on the Books page. The
+part after `#` is the picture's id, which comes from its filename — so renaming
+a file breaks the link. `python3 tools/check-resolution.py` reports any that
+have gone stale.
 
 ### Adding a new artwork
 
@@ -147,6 +164,27 @@ never drift apart. There is no `alt` field in `content/gallery.json` at all.
 An `"alt"` is only needed for a picture that has **no** caption — in this site
 that is the two art-book spreads in `content/books.json`, and any one-off
 `<figure data-image>` written straight into a page (see below).
+
+### Linking to a single artwork
+
+Every picture has its own address. Click one and the address bar shows it:
+
+```
+https://kaijuhaanpaa.com/#2025-kaksi-minaa-two-me-103-x-97
+https://kaijuhaanpaa.com/books/#2015-kosketuksia-isbn-978-952-93-5462-7-1
+```
+
+Opening that link goes straight to the picture with the viewer already open, so
+a single work can be sent to a gallery or put in a message. The viewer also has
+a **Copy link to this work** button, which is easier than picking the address
+out of the bar on a phone.
+
+The identifier comes from the filename, with accents folded to plain letters, so
+it stays the same as long as the file does. **Renaming a picture's file breaks
+any link already shared for it** — worth knowing before tidying filenames.
+
+The Back button closes the viewer rather than leaving the page, and stepping
+through with the arrow keys does not fill up the browser history.
 
 ### Changing the header banner
 
@@ -194,9 +232,9 @@ Write an empty figure and the right image files are worked out for you:
 | Script | What it does |
 | --- | --- |
 | `tools/serve.sh` | Local preview at <http://localhost:8000> |
-| `tools/generate-sizes.py` | Derives the 500/700/1400px copies from `images/original/`. Add `--force` to redo everything |
+| `tools/generate-sizes.py` | Derives the 500/700/1400px copies from `images/original/`. `--force` redoes everything; `--prune` deletes copies left behind by a renamed master |
 | `tools/make-banner.sh` | Cuts the header banner out of a master. Run with no arguments for instructions |
-| `tools/check-resolution.py` | Lists which masters are too small to look sharp, worst first. Re-run after replacing a scan |
+| `tools/check-resolution.py` | Health check for the pictures: broken links, left-over files, and which masters are too small to look sharp. **Run this after renaming any image file** |
 | `tools/download-originals.sh` | Re-downloads the masters listed in `tools/original-urls.txt`. Only needed if `images/original/` is lost |
 
 ### Replacing a picture with a better scan

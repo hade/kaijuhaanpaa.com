@@ -82,7 +82,14 @@ function cvSection(section) {
 		previousYear = year;
 
 		const pieces = [];
-		if (entry.title) pieces.push(`<em class="cv__title">${escapeHtml(entry.title)}</em>`);
+		if (entry.title) {
+			const title = `<em class="cv__title">${escapeHtml(entry.title)}</em>`;
+			// An entry may carry a "link" to somewhere else on the site, e.g. a
+			// book in the CV pointing at its picture on the Books page.
+			pieces.push(entry.link
+				? `<a class="cv__link" href="${escapeHtml(entry.link)}">${title}</a>`
+				: title);
+		}
 		if (entry.detail) pieces.push(escapeHtml(entry.detail));
 		lines.push(`<li>${pieces.join(', ')}</li>`);
 	}

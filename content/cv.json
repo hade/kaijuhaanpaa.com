@@ -540,14 +540,14 @@
     },
     {
      "year": "1970",
-     "title": "Turun Taideyhdistyksen Piirustuskoulun oppilaat / Students of Turku Art School’",
+     "title": "Turun Taideyhdistyksen Piirustuskoulun oppilaat / Students of Turku Art School",
      "detail": "Tammisaari"
     }
    ]
   },
   {
    "heading": "Memberships",
-   "text": "Painters’ Union in Finland; Ornamo /The Finnish Association of Designers (TEXO and Artists-O), Länsi-Uusimaa Artists’ Association (LUTS)"
+   "text": "Painters’ Union in Finland; Ornamo /The Finnish Association of Designers (TEXO and Artists-O), Länsi-Uusimaa Artists’ Association (LUTS), Porvoo Artists’ Association"
   },
   {
    "heading": "Grants",
@@ -591,22 +591,26 @@
     {
      "year": "2022",
      "title": "Mustan tahran arvoitus",
-     "detail": "ISBN 978-952-230-769-9 (children’s novel)"
+     "detail": "ISBN 978-952-230-769-9 (children’s novel)",
+     "link": "/books/#2022-mustan-tahran-arvoitus-isbn-978-952-230-769-9"
     },
     {
      "year": "2022",
      "title": "Kaiju Haanpää – Tekstiilikollaaseja Textile Collages 1974-2022",
-     "detail": "ISBN 978-952-94-5936-0"
+     "detail": "ISBN 978-952-94-5936-0",
+     "link": "/books/#2022-kansi-taidekirja-isbn-978-952-94-5936-0-jpg"
     },
     {
      "year": "2019",
      "title": "Unen tuoja",
-     "detail": "ISBN 978-952-94-2319-4 (novel)"
+     "detail": "ISBN 978-952-94-2319-4 (novel)",
+     "link": "/books/#2019-unen-tuoja-isbn-978-952-94-2319-4-jpg"
     },
     {
      "year": "2015",
      "title": "Kosketuksia",
-     "detail": "ISBN 978-952-93-5462-7 (poems)"
+     "detail": "ISBN 978-952-93-5462-7 (poems)",
+     "link": "/books/#2015-kosketuksia-isbn-978-952-93-5462-7-1"
     }
    ]
   },
