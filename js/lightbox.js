@@ -6,10 +6,10 @@
  * Clicks are handled on the document rather than bound to each link, so this
  * works no matter when the pictures are added to the page.
  *
- * Each picture has its own web address. Opening one puts it in the address bar
- * (…/#2025-kaksi-minaa-two-me-103-x-97), so a single work can be linked to
- * directly; opening such a link goes straight to that picture. The Back button
- * closes the overlay rather than leaving the page.
+ * Each picture has its own web address — /work/<name>/ — and opening one puts
+ * that in the address bar. So the address bar, the copy button and a shared
+ * link are all the same thing, and any of them can be pasted with the right
+ * preview. The Back button closes the overlay rather than leaving the page.
  *
  * Plain JavaScript, no libraries.
  */
@@ -71,17 +71,38 @@ function build() {
  * addresses
  * ---------------------------------------------------------------------- */
 
-const pageUrl = () => location.pathname + location.search;
+/* One address per picture, used everywhere: while browsing, in the address bar,
+ * and by the copy button. It is the picture's own page under work/, which is
+ * also the only form that previews correctly when pasted into a message.
+ *
+ * The older form -- the gallery address with #name on the end -- still opens
+ * the right picture, so links already shared keep working; they are simply not
+ * produced any more.
+ */
+const workUrl = id => `/work/${id}/`;
+
+// The page the viewer is sitting over: the gallery, or the books page. A share
+// page under work/ is not itself that page, so it names it in data-home.
+// Captured before any address is rewritten.
+let homePath = '/';
 
 function idFor(link) {
 	const figure = link.closest('figure');
 	return figure && figure.id ? figure.id : '';
 }
 
+/** The address to hand out for the picture on show — the same one the address
+ *  bar is already displaying. */
+function shareableLink() {
+	const link = links[current];
+	const id = link ? idFor(link) : '';
+	return id ? location.origin + workUrl(id) : location.href;
+}
+
 async function copyLink() {
 	const original = copyButton.textContent;
 	try {
-		await navigator.clipboard.writeText(location.href);
+		await navigator.clipboard.writeText(shareableLink());
 		copyButton.textContent = 'Link copied';
 	} catch {
 		// Clipboard access can be refused; select the address bar instead.
@@ -127,7 +148,7 @@ function show(index) {
 	// Keep the address in step while arrowing along, without filling the
 	// history with one entry per picture.
 	const id = idFor(link);
-	if (id) history.replaceState({ lightbox: id }, '', `${pageUrl()}#${id}`);
+	if (id) history.replaceState({ lightbox: id }, '', workUrl(id));
 }
 
 function collect() {
@@ -152,7 +173,7 @@ function open(link) {
 	// A new history entry, so Back closes the overlay instead of leaving.
 	const id = idFor(link);
 	if (id) {
-		history.pushState({ lightbox: id }, '', `${pageUrl()}#${id}`);
+		history.pushState({ lightbox: id }, '', workUrl(id));
 		pushedState = true;
 	}
 	reveal(index);
@@ -161,7 +182,11 @@ function open(link) {
 /** Open the picture named in the address, if there is one. Called once the
  *  page's pictures have been rendered. */
 export function openFromHash() {
-	const id = decodeURIComponent(location.hash.slice(1));
+	return openWork(decodeURIComponent(location.hash.slice(1)));
+}
+
+/** Open one particular picture, by the id on its <figure>. */
+export function openWork(id) {
 	if (!id) return false;
 
 	// Only an artwork opens the viewer. Year headings share the same address
@@ -198,7 +223,9 @@ function close() {
 		pushedState = false;
 		history.back();             // undo the entry that opening added
 	} else {
-		history.replaceState(null, '', pageUrl());
+		// Arrived straight on a share page, so there is nothing to go back to;
+		// put the address back to the page now on screen.
+		history.replaceState(null, '', homePath);
 	}
 }
 
@@ -207,6 +234,9 @@ function close() {
  * ---------------------------------------------------------------------- */
 
 export function initLightbox() {
+	// Before anything rewrites the address.
+	homePath = document.body.dataset.home || location.pathname + location.search;
+
 	document.addEventListener('click', event => {
 		// Leave modified clicks alone so "open in new tab" keeps working.
 		if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {

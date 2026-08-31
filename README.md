@@ -33,7 +33,10 @@ images/500/           Web copies, 500px wide  (the "medium" size)
 images/700/           Web copies, 700px wide  (the "large" size)
 images/1400/          Web copies, 1400px wide (retina screens and lightbox)
 
-tools/                Scripts for the images — see below.
+work/                 A small page per artwork, so a link shared in WhatsApp
+                      previews the right picture. Generated — don't edit.
+
+tools/                Scripts — see below.
 ```
 
 ## No dependencies, ever
@@ -141,13 +144,13 @@ image files have to actually be made:
 # 1. Put the full-size photo here
 cp ~/photos/2026-uusi-teos.jpg images/original/
 
-# 2. Make its web sizes  (~6 seconds — it skips the ones that already exist)
-python3 tools/generate-sizes.py
-
-# 3. Add it to content/gallery.json — that's all it needs:
+# 2. Add it to content/gallery.json — that's all it needs:
 #      {"file": "2026-uusi-teos.jpg",
 #       "size": "large",
 #       "caption": ["2026 Uusi teos (New Work) 50 x 40"]}
+
+# 3. Bring everything into step
+sh tools/update.sh
 ```
 
 Those three fields are genuinely all a gallery entry needs. For a **new year**,
@@ -165,26 +168,37 @@ An `"alt"` is only needed for a picture that has **no** caption — in this site
 that is the two art-book spreads in `content/books.json`, and any one-off
 `<figure data-image>` written straight into a page (see below).
 
-### Linking to a single artwork
+### Sharing a single artwork
 
-Every picture has its own address. Click one and the address bar shows it:
+Use the **Copy link to this work** button in the viewer. It gives an address
+like:
 
 ```
-https://kaijuhaanpaa.com/#2025-kaksi-minaa-two-me-103-x-97
-https://kaijuhaanpaa.com/books/#2015-kosketuksia-isbn-978-952-93-5462-7-1
+https://kaijuhaanpaa.com/work/2025-kaksi-minaa-two-me-103-x-97/
 ```
 
-Opening that link goes straight to the picture with the viewer already open, so
-a single work can be sent to a gallery or put in a message. The viewer also has
-a **Copy link to this work** button, which is easier than picking the address
-out of the bar on a phone.
+Pasted into WhatsApp, Facebook or a message, that previews **the right
+picture**. It opens a small page showing that work with its caption; clicking
+the picture goes into the gallery, where the viewer opens with every work
+available to arrow through.
+
+The address bar shows the same thing, so copying from there works just as well.
+Opening a picture — whether by clicking it in the gallery or arriving on a
+shared link — puts that picture's address in the bar, and stepping on with the
+arrow keys keeps it in step.
+
+Why a page of its own rather than `kaijuhaanpaa.com/#2025-kaksi-minaa…`:
+everything after `#` is never sent to the server, so a preview crawler asking
+for such a link receives the plain gallery page and shows the same picture every
+time, whichever work you meant. Links in that older form still open the right
+picture — they are simply not produced any more.
 
 The identifier comes from the filename, with accents folded to plain letters, so
 it stays the same as long as the file does. **Renaming a picture's file breaks
 any link already shared for it** — worth knowing before tidying filenames.
 
-The Back button closes the viewer rather than leaving the page, and stepping
-through with the arrow keys does not fill up the browser history.
+While browsing, the Back button closes the viewer rather than leaving the page,
+and stepping through with the arrow keys does not fill up the browser history.
 
 ### Changing the header banner
 
@@ -231,8 +245,10 @@ Write an empty figure and the right image files are worked out for you:
 
 | Script | What it does |
 | --- | --- |
+| `tools/update.sh` | **The one to remember.** Runs the three below in the right order. Safe to run at any time; does nothing when nothing has changed |
 | `tools/serve.sh` | Local preview at <http://localhost:8000> |
 | `tools/generate-sizes.py` | Derives the 500/700/1400px copies from `images/original/`. `--force` redoes everything; `--prune` deletes copies left behind by a renamed master |
+| `tools/make-work-pages.py` | Writes the share page for each artwork under `work/` |
 | `tools/make-banner.sh` | Cuts the header banner out of a master. Run with no arguments for instructions |
 | `tools/check-resolution.py` | Health check for the pictures: broken links, left-over files, and which masters are too small to look sharp. **Run this after renaming any image file** |
 | `tools/download-originals.sh` | Re-downloads the masters listed in `tools/original-urls.txt`. Only needed if `images/original/` is lost |

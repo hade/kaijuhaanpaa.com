@@ -13,7 +13,7 @@
 import { mountShell } from './shell.js';
 import { renderGallery, renderBooks, renderCv } from './content.js';
 import { loadImageSizes, renderStandaloneImages } from './images.js';
-import { initLightbox, openFromHash } from './lightbox.js';
+import { initLightbox, openFromHash, openWork } from './lightbox.js';
 
 const RENDERERS = {
 	gallery: renderGallery,
@@ -62,8 +62,17 @@ async function start() {
 
 	await Promise.all(jobs);
 
-	// The address may name a single artwork, in which case open it. Otherwise
-	// it may name a year to jump to.
+	// A share page under work/ names its artwork in data-open, and arrives with
+	// the viewer already showing — the same thing the visitor would have seen
+	// had they clicked that picture in the gallery. Closing it reveals the rest
+	// of the works behind, rather than leaving them on a page with one picture.
+	const opening = document.body.dataset.open;
+	if (opening) {
+		openWork(opening);
+		return;
+	}
+
+	// Otherwise the address may name a single artwork, or a year to jump to.
 	if (!openFromHash()) {
 		scrollToHash();
 	}

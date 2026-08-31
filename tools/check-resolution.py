@@ -110,6 +110,12 @@ def main():
     print('Image check'.center(78))
     print('=' * 78)
 
+    def slug(filename):
+        stem = re.sub(r'\.(jpe?g|png)$', '', filename, flags=re.I)
+        stem = unicodedata.normalize('NFD', stem)
+        stem = ''.join(c for c in stem if not unicodedata.combining(c))
+        return re.sub(r'[^a-z0-9]+', '-', stem.lower()).strip('-')
+
     # ---- references that do not resolve --------------------------------
     #
     # Renaming a master without re-running tools/generate-sizes.py leaves the
@@ -136,12 +142,6 @@ def main():
     # A "link" in content/cv.json points at a picture by its id, and that id
     # comes from the picture's filename -- so renaming a file quietly breaks
     # the link. This catches that too.
-    def slug(filename):
-        stem = re.sub(r'\.(jpe?g|png)$', '', filename, flags=re.I)
-        stem = unicodedata.normalize('NFD', stem)
-        stem = ''.join(c for c in stem if not unicodedata.combining(c))
-        return re.sub(r'[^a-z0-9]+', '-', stem.lower()).strip('-')
-
     known = {slug(name) for name in manifest}
     bad_links = []
     for section in load('cv.json').get('sections', []):
@@ -165,6 +165,42 @@ def main():
             for s in close:
                 print(f'    did you mean: #{s}')
             print()
+
+    # ---- share pages -----------------------------------------------------
+    #
+    # Every artwork should have a page under work/, or a link shared for it
+    # will preview the wrong picture in WhatsApp and the like.
+    work_root = os.path.join(ROOT, 'work')
+    have_pages = set()
+    if os.path.isdir(work_root):
+        have_pages = {d for d in os.listdir(work_root)
+                      if os.path.exists(os.path.join(work_root, d, 'index.html'))}
+
+    # Only artworks and books get a share page. A picture written straight into
+    # a page -- the collage on the Contact page -- is decoration, not a work.
+    artworks = {nfc(item['file'])
+                for group in load('gallery.json') for item in group['items']}
+    artworks |= {nfc(item['file']) for item in load('books.json')}
+
+    expected = {slug(name) for name in artworks}
+    absent = sorted(expected - have_pages)
+    extra = sorted(have_pages - expected)
+
+    print(f'MISSING SHARE PAGES — links for these would preview the wrong picture  ({len(absent)})\n')
+    if not absent:
+        print('  none\n')
+    else:
+        for s in absent[:12]:
+            print(f'  work/{s}/')
+        if len(absent) > 12:
+            print(f'  ... and {len(absent) - 12} more')
+        print('\n  Make them with:  sh tools/update.sh\n')
+
+    if extra:
+        print(f'SHARE PAGES FOR WORKS NO LONGER ON THE SITE  ({len(extra)})\n')
+        for s in extra[:12]:
+            print(f'  work/{s}/')
+        print('\n  Remove them with:  sh tools/update.sh\n')
 
     # ---- generated files with no master --------------------------------
     orphans = []
