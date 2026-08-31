@@ -76,7 +76,8 @@ def page(item, record, home):
     heading = caption[0] if caption else typographic(item.get('alt') or name)
     rest = ' · '.join(caption[1:]) if len(caption) > 1 else ''
     description = f'{heading}. {rest}'.strip().rstrip('.') if rest else heading
-    description = f'{description} — textile collage by {SITE_TITLE}.'
+    kind = 'book' if home == '/books/' else 'textile collage'
+    description = f'{description} — {kind} by {SITE_TITLE}.'
 
     address = f'{SITE}/work/{slug}/'
     preview = f'{SITE}/images/{PREVIEW_WIDTH}/{name}'
