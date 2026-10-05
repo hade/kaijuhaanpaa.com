@@ -1,7 +1,18 @@
 [
+   {
+  "file": "sukkis-kansi.jpg",
+  "size": "large",
+  "caption": [
+   "2026 Sukkahyppiäinen ja Hupskakkiainen onnenkerää etsimässä",
+   "ISBN 9789522309136",
+   "satukuvakirja / picture storybook",
+   "kirja ilmestyy lokakuussa"
+  ],
+  "alt": ""
+ },
  {
-  "file": "1000081112.jpg",
-  "size": "medium",
+  "file": "tumba-kannet.jpg",
+  "size": "large",
   "caption": [
    "2025 Tumba ja Hirvikuono",
    "ISBN 9789522308849",
@@ -23,7 +34,7 @@
   "file": "2022-kansi-taidekirja-isbn-978-952-94-5936-0.jpg.jpg",
   "size": "large",
   "caption": [
-   "2022 Kaiju Haanpää Tekstiilikollaaseja Textile Collages",
+   "2022 Kaiju Haanpää Tekstiilikollaaseja Textile Collages 1974-2022",
    "ISBN 978-952-94-5936-0"
   ],
   "alt": ""
@@ -41,8 +52,8 @@
   "alt": "Aukeama taidekirjasta: Enkeli / Spread from the art book: Enkeli"
  },
  {
-  "file": "2019-unen-tuoja-isbn-978-952-94-2319-4.jpg.jpg",
-  "size": "medium",
+  "file": "unen-tuoja-kannet.jpg",
+  "size": "large",
   "caption": [
    "2019 Unen tuoja",
    "ISBN 978-952-94-2319-4",

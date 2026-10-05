@@ -367,6 +367,13 @@ p {
 /* 8. Books
    -------------------------------------------------------------------------- */
 
+.books__intro {
+  max-width: var(--width-text);
+  margin: 0 auto var(--space-6);
+  text-align: center;
+  color: var(--colour-ink-muted);
+}
+
 .books .artwork {
   margin-bottom: var(--space-7);
 }

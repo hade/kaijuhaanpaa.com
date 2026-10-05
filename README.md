@@ -28,7 +28,7 @@ content/images.json   Generated list of image dimensions. Don't edit by hand.
 
 images/header/        The wide banner across the top of every page, cut from
                       one of the masters with tools/make-banner.sh.
-images/original/      Full-size masters, exactly as downloaded. 138 files.
+images/original/      Full-size masters, exactly as downloaded. 139 files.
 images/500/           Web copies, 500px wide  (the "medium" size)
 images/700/           Web copies, 700px wide  (the "large" size)
 images/1400/          Web copies, 1400px wide (retina screens and lightbox)
