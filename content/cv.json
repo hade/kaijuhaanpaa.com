@@ -27,7 +27,7 @@
    "entries": [
     {
      "year": "2026",
-     "title": "Muistoja ja unikuvia",
+     "title": "Hopiasiivet / Silver Wings",
      "detail": "Gallery of Porvoo Main Library"
     },
     {
@@ -562,7 +562,7 @@
   },
   {
    "heading": "Memberships",
-   "text": "Painters’ Union in Finland; Ornamo /The Finnish Association of Designers (TEXO and Artists-O), Länsi-Uusimaa Artists’ Association (LUTS), Porvoo Artists’ Association"
+   "text": "Taidemaalariliitto/Painter's Union in Finland; Ornamo/The Finnish Association of Designers (TEXO and Artists-O); Länsi-Uudenmaan taiteilijaseura/Länsi-Uusimaa Artists' Association (LUTS); Porvoon Taiteilijaseura/Porvoo Artists' Association; Suomen lasten- ja nuortenkirjailijat ry/Finnish Writers' Association for Children and Youth"
   },
   {
    "heading": "Grants",
@@ -604,9 +604,21 @@
    "heading": "Books",
    "entries": [
     {
+     "year": "2026",
+     "title": "Sukkahyppiäinen ja Hupskakkiainen onnenkerää etsimässä",
+     "detail": "ISBN 978-952-230-913-6 (picture storybook), Aurinko Kustannus",
+     "link": "/books/#sukkis-kansi"
+    },
+    {
+     "year": "2025",
+     "title": "Tumba ja Hirvikuono",
+     "detail": "ISBN 978-952-230-884-9 (picture storybook), Aurinko Kustannus",
+     "link": "/books/#tumba-kannet"
+    },
+    {
      "year": "2022",
      "title": "Mustan tahran arvoitus",
-     "detail": "ISBN 978-952-230-769-9 (children’s novel)",
+     "detail": "ISBN 978-952-230-769-9 (children’s novel), Aurinko Kustannus",
      "link": "/books/#2022-mustan-tahran-arvoitus-isbn-978-952-230-769-9"
     },
     {

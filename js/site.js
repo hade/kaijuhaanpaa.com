@@ -11,12 +11,13 @@
  */
 
 import { mountShell } from './shell.js';
-import { renderGallery, renderBooks, renderCv } from './content.js';
+import { renderGallery, renderCurrent, renderBooks, renderCv } from './content.js';
 import { loadImageSizes, renderStandaloneImages } from './images.js';
 import { initLightbox, openFromHash, openWork } from './lightbox.js';
 
 const RENDERERS = {
 	gallery: renderGallery,
+	current: renderCurrent,
 	books: renderBooks,
 	cv: renderCv,
 	// "year-index" is filled in by renderGallery, so it needs no renderer here.

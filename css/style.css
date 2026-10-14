@@ -9,6 +9,7 @@
      5.  Page headings
      6.  Gallery
      7.  Artwork figures      the .artwork--large / .artwork--medium sizes
+     7b. Current
      8.  Books
      9.  CV
      10. Contact
@@ -251,6 +252,23 @@ p {
   border-bottom-color: var(--colour-ink);
 }
 
+/* Keeps all five entries on one line on a phone, rather than leaving the last
+   one stranded on a line of its own. */
+@media (max-width: 480px) {
+  .site-nav {
+    padding: 0 var(--space-3);
+  }
+
+  .site-nav ul {
+    gap: var(--space-2) 0.875rem;
+  }
+
+  .site-nav a {
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+  }
+}
+
 /* 5. Page headings
    -------------------------------------------------------------------------- */
 
@@ -362,6 +380,56 @@ p {
   color: var(--colour-ink-muted);
   font-size: var(--text-caption);
   line-height: 1.5;
+}
+
+/* 7b. Current
+   --------------------------------------------------------------------------
+   News items, newest first: a date and title above a captioned picture. The
+   picture is an ordinary .artwork, so it is sized and opens exactly as one in
+   the gallery does. */
+
+.post + .post {
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--colour-rule);
+}
+
+.post__header {
+  margin-bottom: var(--space-4);
+  text-align: center;
+}
+
+.post__date {
+  display: block;
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-small);
+  letter-spacing: 0.1em;
+  color: var(--colour-ink-muted);
+}
+
+.post__title {
+  font-size: var(--text-title);
+}
+
+/* The rule between items does the spacing, not the figure's own margin. */
+.post .artwork {
+  margin-bottom: 0;
+}
+
+/* The lines under a news picture are the news itself, so they are set at
+   reading size rather than as a small gallery caption. */
+.post .artwork__caption {
+  margin-top: var(--space-4);
+  color: var(--colour-ink);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.current__empty {
+  text-align: center;
+  color: var(--colour-ink-muted);
+  font-style: italic;
 }
 
 /* 8. Books

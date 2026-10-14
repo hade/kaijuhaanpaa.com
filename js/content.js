@@ -47,6 +47,50 @@ export async function renderGallery(target) {
 }
 
 /* -------------------------------------------------------------------------
+ * Current
+ *
+ * News items, newest first. Each is {date, title, file?, size?, caption[]}:
+ * the date and title head the item, then the picture with its caption lines
+ * beneath it, exactly as a picture in the gallery.
+ * ---------------------------------------------------------------------- */
+
+/** "2026-10-14" -> "14.10.2026", the Finnish way. Anything else, e.g.
+ *  "Syksy 2026 / Autumn 2026", is printed as written. */
+function displayDate(date) {
+	const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
+	if (!match) return { text: date, datetime: '' };
+	const [, year, month, day] = match;
+	return { text: `${Number(day)}.${Number(month)}.${year}`, datetime: date };
+}
+
+function currentItem(item, manifest) {
+	const lines = [];
+
+	if (item.date) {
+		const { text, datetime } = displayDate(item.date);
+		lines.push(datetime
+			? `<time class="post__date" datetime="${escapeHtml(datetime)}">${escapeHtml(text)}</time>`
+			: `<p class="post__date">${escapeHtml(text)}</p>`);
+	}
+	if (item.title) {
+		lines.push(`<h2 class="post__title">${escapeHtml(item.title)}</h2>`);
+	}
+
+	const header = lines.length ? `<header class="post__header">\n${lines.join('\n')}\n</header>` : '';
+	const figure = item.file ? figureHTML(item, manifest) : '';
+
+	return `<article class="post">\n${header}\n${figure}\n</article>`;
+}
+
+export async function renderCurrent(target) {
+	const [items, manifest] = await Promise.all([loadData('current.json'), loadImageSizes()]);
+
+	target.innerHTML = items.length
+		? items.map(item => currentItem(item, manifest)).join('\n')
+		: '<p class="current__empty">Nothing new at the moment.</p>';
+}
+
+/* -------------------------------------------------------------------------
  * Books
  * ---------------------------------------------------------------------- */
 

@@ -81,7 +81,7 @@ function build() {
  */
 const workUrl = id => `/work/${id}/`;
 
-// The page the viewer is sitting over: the gallery, or the books page. A share
+// The page the viewer is sitting over: the gallery, Current or Books. A share
 // page under work/ is not itself that page, so it names it in data-home.
 // Captured before any address is rewritten.
 let homePath = '/';

@@ -25,8 +25,9 @@ Each page differs from the gallery only in its head, which names that work for
 the preview, and in the data-open attribute on <body>, which tells js/site.js
 which picture to show.
 
-These pages are generated. Do not edit them by hand -- edit content/gallery.json
-or content/books.json and run this again (or just run tools/update.sh).
+These pages are generated. Do not edit them by hand -- edit content/gallery.json,
+content/current.json or content/books.json and run this again (or just run
+tools/update.sh).
 """
 import html
 import json
@@ -68,16 +69,25 @@ def typographic(text):
 
 
 def page(item, record, home):
-    """One work page. `home` is the page it belongs to: "/" or "/books/"."""
+    """One work page. `home` is the page it belongs to: "/", "/current/" or
+    "/books/"."""
     name = item['file']
     slug = slug_for(name)
     caption = [typographic(line) for line in item.get('caption') or []]
 
-    heading = caption[0] if caption else typographic(item.get('alt') or name)
-    rest = ' · '.join(caption[1:]) if len(caption) > 1 else ''
+    # A news item on the Current page has a title of its own; everything else
+    # is named by the first line of its caption.
+    if item.get('title'):
+        heading, rest = typographic(item['title']), ' · '.join(caption)
+    else:
+        heading = caption[0] if caption else typographic(item.get('alt') or name)
+        rest = ' · '.join(caption[1:])
     description = f'{heading}. {rest}'.strip().rstrip('.') if rest else heading
-    kind = 'book' if home == '/books/' else 'textile collage'
-    description = f'{description} — {kind} by {SITE_TITLE}.'
+    if home == '/current/':
+        description = f'{description} — {SITE_TITLE}.'
+    else:
+        kind = 'book' if home == '/books/' else 'textile collage'
+        description = f'{description} — {kind} by {SITE_TITLE}.'
 
     address = f'{SITE}/work/{slug}/'
     preview = f'{SITE}/images/{PREVIEW_WIDTH}/{name}'
@@ -89,6 +99,9 @@ def page(item, record, home):
         render, page_title = 'gallery', 'Gallery'
         index_markup = ('\t\t<nav class="year-index" aria-label="Jump to year" '
                         'data-render="year-index"></nav>\n')
+    elif home == '/current/':
+        render, page_title = 'current', 'Current'
+        index_markup = ''
     else:
         render, page_title = 'books', 'Books'
         index_markup = ''
@@ -97,8 +110,9 @@ def page(item, record, home):
 <!--
 	GENERATED FILE — do not edit.
 
-	Written by tools/make-work-pages.py from content/gallery.json and
-	content/books.json. Change the caption there and run tools/update.sh.
+	Written by tools/make-work-pages.py from content/gallery.json,
+	content/current.json and content/books.json. Change the caption there and
+	run tools/update.sh.
 -->
 <html lang="en">
 <head>
@@ -146,6 +160,9 @@ def main():
             works.append((item, '/'))
     for item in load('books.json'):
         works.append((item, '/books/'))
+    for item in load('current.json'):
+        if item.get('file'):
+            works.append((item, '/current/'))
 
     os.makedirs(OUTPUT, exist_ok=True)
 
@@ -158,7 +175,12 @@ def main():
             missing.append(item['file'])
             continue
 
+        # A picture can appear on more than one page -- a new book shown on
+        # Current as well as on Books. Its link opens it where it is first
+        # listed, so the gallery and Books win over Current.
         slug = slug_for(item['file'])
+        if slug in wanted:
+            continue
         wanted.add(slug)
         folder = os.path.join(OUTPUT, slug)
         os.makedirs(folder, exist_ok=True)

@@ -8,6 +8,7 @@ pages. Any web host that can serve files will run it.
 
 ```
 index.html            Gallery     ─┐
+current/index.html    Current      │
 books/index.html      Books        │ Hand-written. Edit these directly;
 cv/index.html         CV           │ nothing generates them.
 contact/index.html    Contact     ─┘
@@ -22,6 +23,7 @@ js/images.js          Picks the right image size and builds the srcset.
 js/lightbox.js        Click-to-enlarge overlay.
 
 content/gallery.json  The artworks, grouped by year.
+content/current.json  The news on the Current page, newest first.
 content/books.json    The books.
 content/cv.json       The CV.
 content/images.json   Generated list of image dimensions. Don't edit by hand.
@@ -70,6 +72,7 @@ build.**
 | To change… | Edit |
 | --- | --- |
 | An artwork's caption or size | `content/gallery.json` |
+| The news on the Current page | `content/current.json` |
 | The books | `content/books.json` |
 | The CV | `content/cv.json` |
 | The contact details | `contact/index.html` (it is only a few lines, so it lives in the page) |
@@ -134,6 +137,33 @@ The four books in the CV already link to their pictures on the Books page. The
 part after `#` is the picture's id, which comes from its filename — so renaming
 a file breaks the link. `python3 tools/check-resolution.py` reports any that
 have gone stale.
+
+### Adding news to the Current page
+
+`content/current.json` holds the news, newest first.
+Each item is a date, a title and a picture with lines of text beneath it:
+
+```json
+{
+ "date": "2026-10-14",
+ "title": "Näyttely / Exhibition",
+ "file": "2026-uusi-teos.jpg",
+ "size": "large",
+ "caption": ["Galleria, Kaupunki / Gallery, Town", "1.11.–30.11.2026"]
+}
+```
+
+- `date` - written as `2026-10-14`, it is shown the Finnish way, `14.10.2026`. Anything else, such as `Syksy 2026 / Autumn 2026`, is shown as written.
+- `title` - the heading of the item.
+- `file` - the picture, named exactly as in `content/gallery.json`. A new picture needs the same steps as a new artwork (below). Optional; leave it out for an item with no picture.
+- `size` - `large` or `medium`, as in the gallery.
+- `caption` - the lines under the picture, one list entry per line. They are set larger than gallery captions because they are the news itself.
+
+Put the newest item first.
+To take an item down, delete it from the file.
+
+A picture can be on Current and in the gallery or on Books at the same time.
+Its shared link then opens it in the gallery or on Books, where it stays after the news is gone.
 
 ### Adding a new artwork
 
@@ -304,8 +334,8 @@ as they are, and a small script could turn them back into static HTML.
 ## Deploying
 
 Upload everything except `tools/` and `images/original/` — those are working
-files that no page refers to. The site is `index.html`, the three page folders,
-`css/`, `js/`, `content/` and the `images/500`, `images/700` and `images/1400`
+files that no page refers to. The site is `index.html`, the page folders
+(`current/`, `books/`, `cv/`, `contact/` and `work/`), `css/`, `js/`, `content/` and the `images/500`, `images/700` and `images/1400`
 folders.
 
 `content/` **must** be uploaded — the pages read their text from it.

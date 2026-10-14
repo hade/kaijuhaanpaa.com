@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+	The Current page: news, newest first.
+
+	Edit this file directly — nothing generates it. The header, navigation and
+	footer are added by /js/shell.js; the news items are read from
+	/content/current.json. To add one, edit that file.
+-->
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Current — Kaiju Haanpää</title>
+	<meta name="description" content="News and current events from Kaiju Haanpää.">
+
+	<meta property="og:site_name" content="Kaiju Haanpää">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Current — Kaiju Haanpää">
+	<meta property="og:description" content="News and current events from Kaiju Haanpää.">
+	<meta property="og:url" content="https://kaijuhaanpaa.com/current/">
+	<meta property="og:image" content="https://kaijuhaanpaa.com/images/700/2025-kaksi-minaa-two-me-103-x-97.jpg">
+
+	<meta name="twitter:card" content="summary_large_image">
+
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<main id="main" class="page">
+		<header class="page-header">
+			<h1 class="page-title">Current</h1>
+		</header>
+
+		<section class="current" data-render="current"></section>
+	</main>
+
+	<script type="module" src="/js/site.js"></script>
+</body>
+</html>

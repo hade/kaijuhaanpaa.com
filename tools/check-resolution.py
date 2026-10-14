@@ -54,13 +54,21 @@ def display_sizes():
             sizes[name] = item.get('size', 'large')
             sources[name] = f"gallery.json, {group['year'] or 'no year'}"
 
+    for item in load('current.json'):
+        if not item.get('file'):
+            continue
+        name = nfc(item['file'])
+        sizes.setdefault(name, item.get('size', 'large'))
+        sources.setdefault(name, 'current.json')
+
     for item in load('books.json'):
         name = nfc(item['file'])
         sizes[name] = item.get('size', 'medium')
         sources[name] = 'books.json'
 
     # Pictures written straight into a page carry data-image="..." there.
-    for page in ('index.html', 'books/index.html', 'cv/index.html', 'contact/index.html'):
+    for page in ('index.html', 'current/index.html', 'books/index.html',
+                 'cv/index.html', 'contact/index.html'):
         path = os.path.join(ROOT, page)
         if not os.path.exists(path):
             continue
@@ -176,10 +184,11 @@ def main():
         have_pages = {d for d in os.listdir(work_root)
                       if os.path.exists(os.path.join(work_root, d, 'index.html'))}
 
-    # Only artworks and books get a share page. A picture written straight into
+    # Only artworks, news items and books get a share page. A picture written straight into
     # a page -- the collage on the Contact page -- is decoration, not a work.
     artworks = {nfc(item['file'])
                 for group in load('gallery.json') for item in group['items']}
+    artworks |= {nfc(item['file']) for item in load('current.json') if item.get('file')}
     artworks |= {nfc(item['file']) for item in load('books.json')}
 
     expected = {slug(name) for name in artworks}

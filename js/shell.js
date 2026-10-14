@@ -1,6 +1,6 @@
 /* The parts every page shares: the header with the navigation, and the footer.
  *
- * They live here rather than being copied into all four HTML files, so a change
+ * They live here rather than being copied into every HTML file, so a change
  * to the navigation is a change in one place.
  *
  * Plain JavaScript, no libraries.
@@ -13,6 +13,7 @@ const SITE_TAGLINE = 'Textile collages';
 // Add a page here and it appears in the menu everywhere.
 const NAV = [
 	{ href: '/', label: 'Gallery' },
+	{ href: '/current/', label: 'Current' },
 	{ href: '/books/', label: 'Books' },
 	{ href: '/cv/', label: 'CV' },
 	{ href: '/contact/', label: 'Contact' },
