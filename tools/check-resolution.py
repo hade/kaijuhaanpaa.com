@@ -39,6 +39,19 @@ def load(name):
         return json.load(fh)
 
 
+def current_pictures():
+    """Every picture on the Current page. A news item holds its pictures in an
+    "images" list, or has one picture written on the item itself, or none.
+    Matches pictures() in js/content.js."""
+    found = []
+    for item in load('current.json'):
+        if isinstance(item.get('images'), list):
+            found.extend(item['images'])
+        elif item.get('file'):
+            found.append(item)
+    return found
+
+
 def nfc(text):
     """macOS reports filenames decomposed; compare everything composed."""
     return unicodedata.normalize('NFC', text)
@@ -54,9 +67,7 @@ def display_sizes():
             sizes[name] = item.get('size', 'large')
             sources[name] = f"gallery.json, {group['year'] or 'no year'}"
 
-    for item in load('current.json'):
-        if not item.get('file'):
-            continue
+    for item in current_pictures():
         name = nfc(item['file'])
         sizes.setdefault(name, item.get('size', 'large'))
         sources.setdefault(name, 'current.json')
@@ -188,7 +199,7 @@ def main():
     # a page -- the collage on the Contact page -- is decoration, not a work.
     artworks = {nfc(item['file'])
                 for group in load('gallery.json') for item in group['items']}
-    artworks |= {nfc(item['file']) for item in load('current.json') if item.get('file')}
+    artworks |= {nfc(item['file']) for item in current_pictures()}
     artworks |= {nfc(item['file']) for item in load('books.json')}
 
     expected = {slug(name) for name in artworks}

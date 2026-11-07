@@ -1,11 +1,49 @@
 [
  {
+  "date": "November 2026",
+  "title": "Christmas Card",
+  "file": "sukkahyppiainen-xmas-card.jpg",
+  "size": "medium",
+  "caption": [
+   "Sukkahyppiäinen ja Hupskakkiainen Christmas Card"
+  ]
+ },
+ {
   "date": "Syksy 2026 / Autumn 2026",
   "title": "Uusi kirja / New book",
   "file": "sukkis-kansi.jpg",
   "size": "medium",
   "caption": [
-   "Sukkahyppiäinen ja Hupskakkiainen onnenkerää etsimässä"
+   "Sukkahyppiäinen ja Hupskakkiainen onnenkerää etsimässä",
+   "Jos kirja kiinnostaa, ota yhteyttä kaiju2011@gmail.com"
+  ]
+ },
+ {
+  "date": "September 2026",
+  "title": "Porvoon kirjasto/Porvoo Main Library",
+  "images": [
+   {
+    "file": "porvoo-library.jpg",
+    "size": "medium",
+    "caption": [
+     ""
+    ]
+   },
+   {
+    "file": "porvoo-library2.jpg",
+    "size": "medium",
+    "caption": ["Some photos from the exhibition 'Hopeasiivet/Silver Wings'"]
+   }
+  ]
+ },
+ {
+  "date": "September 2026",
+  "title": "The exhibition of Taiteilijat O/Artists O in Tampere",
+  "file": "tampereen-taiteilijat.jpg",
+  "size": "medium",
+  "caption": [
+   "Textile collage 'Elämän oksilla ilot ja surut/Tree of Life with Joy and Sorrow' (2024, 177 x 116 cm)",
+   "The work also found a new home there."
   ]
  }
 ]

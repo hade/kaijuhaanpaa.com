@@ -52,7 +52,17 @@ export async function renderGallery(target) {
  * News items, newest first. Each is {date, title, file?, size?, caption[]}:
  * the date and title head the item, then the picture with its caption lines
  * beneath it, exactly as a picture in the gallery.
+ *
+ * An item with several pictures lists them under "images" instead, each one
+ * {file, size?, caption[]}, shown one after another under the same heading.
  * ---------------------------------------------------------------------- */
+
+/** The pictures of a news item: its "images" list, or the one picture written
+ *  on the item itself, or none. */
+function pictures(item) {
+	if (Array.isArray(item.images)) return item.images;
+	return item.file ? [item] : [];
+}
 
 /** "2026-10-14" -> "14.10.2026", the Finnish way. Anything else, e.g.
  *  "Syksy 2026 / Autumn 2026", is printed as written. */
@@ -77,9 +87,9 @@ function currentItem(item, manifest) {
 	}
 
 	const header = lines.length ? `<header class="post__header">\n${lines.join('\n')}\n</header>` : '';
-	const figure = item.file ? figureHTML(item, manifest) : '';
+	const figures = pictures(item).map(picture => figureHTML(picture, manifest)).join('\n');
 
-	return `<article class="post">\n${header}\n${figure}\n</article>`;
+	return `<article class="post">\n${header}\n${figures}\n</article>`;
 }
 
 export async function renderCurrent(target) {

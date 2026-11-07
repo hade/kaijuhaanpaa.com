@@ -157,7 +157,21 @@ Each item is a date, a title and a picture with lines of text beneath it:
 - `title` - the heading of the item.
 - `file` - the picture, named exactly as in `content/gallery.json`. A new picture needs the same steps as a new artwork (below). Optional; leave it out for an item with no picture.
 - `size` - `large` or `medium`, as in the gallery.
-- `caption` - the lines under the picture, one list entry per line. They are set larger than gallery captions because they are the news itself.
+- `caption` - the lines under the picture, one list entry per line. They are set larger than gallery captions because they are the news itself. An email address in a line becomes a clickable link by itself; write it as plain text, without HTML tags.
+
+An item with several pictures lists them under `images` instead of `file`, `size` and `caption`.
+They are shown one after another under the same date and title, each with its own caption:
+
+```json
+{
+ "date": "September 2026",
+ "title": "Näyttely / Exhibition",
+ "images": [
+  {"file": "nayttely-1.jpg", "size": "medium", "caption": ["First picture"]},
+  {"file": "nayttely-2.jpg", "size": "medium", "caption": []}
+ ]
+}
+```
 
 Put the newest item first.
 To take an item down, delete it from the file.

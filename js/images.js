@@ -102,6 +102,22 @@ export function typographic(text) {
 	return String(text).replace(/(?<=\d)\s*[xX]\s*(?=\d)/g, ' × ');
 }
 
+const EMAIL = /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/g;
+
+/** One caption line as HTML: escaped, with any e-mail address in it turned
+ *  into a mailto: link, so "ota yhteyttä kaiju2011@gmail.com" can be clicked. */
+function captionLineHTML(text) {
+	let html = '';
+	let last = 0;
+	for (const match of text.matchAll(EMAIL)) {
+		const address = escapeHtml(match[0]);
+		html += escapeHtml(text.slice(last, match.index));
+		html += `<a href="mailto:${address}">${address}</a>`;
+		last = match.index + match[0].length;
+	}
+	return html + escapeHtml(text.slice(last));
+}
+
 /**
  * The id a picture is known by in a link, worked out from its filename:
  *
@@ -160,7 +176,7 @@ export function figureHTML(item, manifest, inner = false) {
 	const alt = typographic(caption.join(' ') || item.alt || '');
 
 	const figcaption = caption.length
-		? `\n\t<figcaption class="artwork__caption">${caption.map(escapeHtml).join('<br>')}</figcaption>`
+		? `\n\t<figcaption class="artwork__caption">${caption.map(captionLineHTML).join('<br>')}</figcaption>`
 		: '';
 
 	const picture = `<a class="artwork__link" href="/images/${LIGHTBOX_WIDTH}/${encodeURIComponent(name)}">

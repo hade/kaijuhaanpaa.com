@@ -417,6 +417,11 @@ p {
   margin-bottom: 0;
 }
 
+/* Several pictures under one heading sit closer together than separate items. */
+.post .artwork + .artwork {
+  margin-top: var(--space-5);
+}
+
 /* The lines under a news picture are the news itself, so they are set at
    reading size rather than as a small gallery caption. */
 .post .artwork__caption {

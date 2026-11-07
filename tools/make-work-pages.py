@@ -56,6 +56,22 @@ def load(name):
         return json.load(fh)
 
 
+def current_pictures():
+    """Every picture on the Current page. A news item holds its pictures in an
+    "images" list, or has one picture written on the item itself, or none.
+    Matches pictures() in js/content.js."""
+    found = []
+    for item in load('current.json'):
+        if isinstance(item.get('images'), list):
+            # Each picture is headed by its news item's title on its share
+            # page, as a single picture written on the item is.
+            found.extend({'title': item.get('title'), **picture}
+                         for picture in item['images'])
+        elif item.get('file'):
+            found.append(item)
+    return found
+
+
 def slug_for(filename):
     """Matches slugFor() in js/images.js -- the two must agree."""
     stem = re.sub(r'\.(jpe?g|png)$', '', filename, flags=re.I)
@@ -160,9 +176,8 @@ def main():
             works.append((item, '/'))
     for item in load('books.json'):
         works.append((item, '/books/'))
-    for item in load('current.json'):
-        if item.get('file'):
-            works.append((item, '/current/'))
+    for item in current_pictures():
+        works.append((item, '/current/'))
 
     os.makedirs(OUTPUT, exist_ok=True)
 
